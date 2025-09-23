@@ -2,9 +2,7 @@ from flask import Flask, jsonify, request
 import requests
 import os
 from datetime import datetime
-from dotenv import load_dotenv
 
-load_dotenv()
 
 API_KEY = os.getenv("API_FOOTBALL_KEY")
 BASE_URL = "https://v3.football.api-sports.io"
@@ -55,4 +53,5 @@ def matches_by_date(date):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
