@@ -32,6 +32,9 @@ def get_matches_by_date(date, league_id=None):
     except Exception as e:
         return {"error": "Errore nella richiesta esterna", "details": str(e)}
 
+    print("📦 Risposta API Football completa:")
+    print(data)  # ✅ Questo ora è nel blocco corretto
+
     matches = []
     for match in data.get('response', []):
         matches.append({
@@ -61,6 +64,7 @@ def matches_by_date(date):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
