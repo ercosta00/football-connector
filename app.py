@@ -6,6 +6,9 @@ from datetime import datetime
 app = Flask(__name__)
 
 API_KEY = os.getenv("API_FOOTBALL_KEY")
+if not API_KEY:
+    raise ValueError("⚠️ La chiave API_FOOTBALL_KEY non è stata trovata nelle variabili d'ambiente.")
+
 BASE_URL = "https://v3.football.api-sports.io"
 
 HEADERS = {
@@ -58,6 +61,7 @@ def matches_by_date(date):
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
