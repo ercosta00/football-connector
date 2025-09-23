@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Football Match API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000  # oppure l’URL pubblico se hai deployato su Render
+paths:
+  /matches/date/{date}:
+    get:
+      summary: Ottieni le partite per una data specifica
+      operationId: getMatchesByDate
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "2025-09-24"
+        - name: league
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 135
+      responses:
+        '200':
+          description: Lista delle partite
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    league:
+                      type: string
+                    country:
+                      type: string
+                    home_team:
+                      type: string
+                    away_team:
+                      type: string
+                    date:
+                      type: string
+                    venue:
+                      type: string
+                    status:
+                      type: string
